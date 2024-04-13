@@ -40,6 +40,4 @@ FileDB/
 │   └── Users/
 │       ├── IUserService.cs
 │       └── UserService.cs
-├── Users.txt
-├── bin/
-└── obj/
+└── Users.txt
