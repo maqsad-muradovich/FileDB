@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileDB.Brokers.Logging
 {
-    internal class LiggingBroker : ILoggingBroker
+    internal class LoggingBroker : ILoggingBroker
     {
         public void LogInforamation(string message)
         {

@@ -13,6 +13,6 @@ namespace FileDB.Brokers.Storages
         User AddUser(User user);
         List<User> ReadAllUsers();
         void UpdateUser(User user);
-        void DeleteUser(User user);
+        void DeleteUser(int id);
     }
 }
