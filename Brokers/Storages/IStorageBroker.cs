@@ -11,6 +11,8 @@ namespace FileDB.Brokers.Storages
     internal interface IStorageBroker
     {
         User AddUser(User user);
-        User[] ReadAllUsers();
+        List<User> ReadAllUsers();
+        void UpdateUser(User user);
+        void DeleteUser(User user);
     }
 }

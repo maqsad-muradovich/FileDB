@@ -8,37 +8,37 @@ using System.Threading.Tasks;
 
 namespace FileDB.Services.Identities
 {
-    internal sealed class IdentitiService
+    internal sealed class IdentityService
     {
-        private static IdentitiService instance;
+        private static IdentityService instance;
         private static int id;
         private readonly IStorageBroker storageBroker;
 
-        private IdentitiService()
+        private IdentityService()
         {
             this.storageBroker = new FileStorageBroker();
         }
 
-        public static IdentitiService GetInstance()
+        public static IdentityService GetInstance()
         {
             if (instance is null) 
             {
-                instance = new IdentitiService();
+                instance = new IdentityService();
             }
             return instance;
         }
 
         public int GetNewId()
         {
-            User[] users = this.storageBroker.ReadAllUsers();
+            List<User> users = this.storageBroker.ReadAllUsers();
 
-            return users.Length is not 0
+            return users.Count is not 0
                 ? IncrementLastUserId(users)
                 : 1;
 
         }
 
-        private static int IncrementLastUserId(User[] users) =>
-            users[users.Length - 1].Id + 1;
+        private static int IncrementLastUserId(List<User> users) =>
+            users[users.Count - 1].Id + 1;
     }
 }

@@ -25,11 +25,11 @@ namespace FileDB.Brokers.Storages
             return user;
         }
 
-        public User[] ReadAllUsers()
+        public List<User> ReadAllUsers()
         {
             string[] userLines = File.ReadAllLines(FilePath);
             int userLength = userLines.Length;
-            User[] users = new User[userLength];
+            List<User> users = new List<User>();
 
             for (int iterator = 0; iterator < userLength; iterator++)
             {
@@ -42,10 +42,44 @@ namespace FileDB.Brokers.Storages
                     Name = userProperties[1],
                 };
 
-                users[iterator] = user;
+                users.Add(user);
             }
 
             return users;
+        }
+
+        public void UpdateUser(User user)
+        {
+            List<User> users = ReadAllUsers();
+
+            for (int iterator = 0; iterator < users.Count; iterator++)
+            {
+                if (users[iterator].Id == user.Id)
+                {
+                    users[iterator] = user;
+                    break;
+                }
+            }
+
+            File.WriteAllText(FilePath, string.Empty);
+            foreach(User iterator in users)
+            {
+                AddUser(iterator);
+            }
+        }
+
+        public void DeleteUser(int id)
+        {
+            List<User> users = ReadAllUsers();
+            File.WriteAllText(FilePath, string.Empty);
+
+            for (int iterator = 0; iterator < users.Count; iterator++)
+            {
+                if (users[iterator].Id != id)
+                {
+                    this.AddUser(users[iterator]);
+                }
+            }
         }
 
         private void EnsureFileExists()

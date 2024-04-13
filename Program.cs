@@ -7,8 +7,8 @@ namespace FileDB
     {
         static void Main(string[] args)
         {
-            IdentitiService identitiService1 = IdentitiService.GetInstance();
-            IdentitiService identitiService2 = IdentitiService.GetInstance();
+            IdentityService identitiService1 = IdentityService.GetInstance();
+            IdentityService identitiService2 = IdentityService.GetInstance();
 
             Console.WriteLine(identitiService1.GetNewId());
             Console.WriteLine(identitiService2.GetNewId());
