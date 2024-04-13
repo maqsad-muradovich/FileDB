@@ -25,8 +25,6 @@ The FileDB project is divided into several folders, each of which is responsible
         
 - `Program.cs`: Main program file containing the entry point.
 
-- `Users.txt`: Data file used to store user information.
-
-- `README.md`: This file contains a description of the project.
+- `Users.txt`: Data file used to store user information
 
 To work with the project, you should familiarize yourself with each of the above folders and files to understand their functions and how they interact.
