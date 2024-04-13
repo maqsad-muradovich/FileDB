@@ -69,4 +69,3 @@ The application will prompt you to select an operation from the menu, depending 
 
 - [C# Documentation](https://learn.microsoft.com/ru-ru/dotnet/csharp/)
 - [.NET Documentation](https://learn.microsoft.com/ru-ru/dotnet/)
-```
