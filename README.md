@@ -1,43 +1,32 @@
-﻿### Project description
+﻿# Project architecture
 
-The `FileDB` project is a user management system that uses a text file (`Users.txt`) as a database to store user data. The project consists of several main components:
+The FileDB project is divided into several folders, each of which is responsible for different aspects of the project:
 
-- **Brokers**:
-     - **Logging**: Implements `ILoggingBroker` for logging various operations (information messages, errors, successes).
-     - **Storages**: Implements `IStorageBroker` to manage user data (adding, reading, updating and deleting).
+- `Brokers/`: Contains brokers for storage access and logging.
+     - `Storages/`: Stores brokers for managing files and data.
+         - `FileStorageBroker.cs`: Implementation of an interface for managing files.
+         - `IStorageBroker.cs`: Interface for file management.
+     - `Logging/`: Stores brokers for logging.
+         - `LoggingBroker.cs`: Implementation of the logging interface.
+         - `ILoggingBroker.cs`: Interface for logging.
+        
+- `Models/`: Stores data models.
+     - `Users/`: Contains the data model for users.
+         - `User.cs`: Definition of the `User` class.
+        
+- `Services/`: Contains services to control various aspects of the application.
+     - `Identities/`: Service for managing identifiers.
+         - `IdentityService.cs`: Class providing unique identifiers.
+     - `Users/`: Services for managing users.
+         - `UserService.cs`: Class responsible for operations with users.
+         - `IUserService.cs`: Interface for the `UserService` service.
+     - `Processing/`: Services for processing users.
+         - `UserProcessing.cs`: Class for processing users.
+        
+- `Program.cs`: Main program file containing the entry point.
 
-- **Models/Users**: Contains a definition of the `User` class, representing a user with `Id` and `Name`.
+- `Users.txt`: Data file used to store user information.
 
-- **Services**:
-     - **Identities**: Implements `IdentityService` to generate unique identifiers (`Id`) for users.
-     - **Processing**: Implements `UserProcessing` to perform operations on users, such as creating, displaying, deleting and updating users.
-     - **Users**: Implements `UserService` to handle operations on users, including adding, displaying, updating and deleting.
+- `README.md`: This file contains a description of the project.
 
-The entire system is controlled through a program (`Program.cs`) that instantiates various services and performs operations on users. The project provides basic functionality for managing users using a file system to store data.
-
-### Architecture
-
-FileDB/
-├── Brokers/
-│   ├── Logging/
-│   │   ├── ILoggingBroker.cs
-│   │   └── LoggingBroker.cs
-│   └── Storages/
-│       ├── FileStorageBroker.cs
-│       └── IStorageBroker.cs
-├── FileDB.csproj
-├── FileDB.sln
-├── Models/
-│   └── Users/
-│       └── User.cs
-├── Program.cs
-├── README.md
-├── Services/
-│   ├── Identities/
-│   │   └── IdentityService.cs
-│   ├── Processing/
-│   │   └── UserProcessing.cs
-│   └── Users/
-│       ├── IUserService.cs
-│       └── UserService.cs
-└── Users.txt
+To work with the project, you should familiarize yourself with each of the above folders and files to understand their functions and how they interact.
