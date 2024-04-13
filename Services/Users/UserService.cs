@@ -1,11 +1,11 @@
-﻿using FileDB.Brokers.Logging;
-using FileDB.Brokers.Storages;
-using FileDB.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Text;
+using System.Linq;
+using FileDB.Models.Users;
 using System.Threading.Tasks;
+using FileDB.Brokers.Logging;
+using FileDB.Brokers.Storages;
+using System.Collections.Generic;
 
 namespace FileDB.Services.Users
 {
@@ -36,7 +36,7 @@ namespace FileDB.Services.Users
             {
                 loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
             }
-            loggingBroker.LogInforamation("===End of users");
+            loggingBroker.LogInforamation("===End of users===\n");
         }
 
         private User CreateAndLogInvalidUser()
@@ -62,11 +62,11 @@ namespace FileDB.Services.Users
         public void DeleteUser(int id)
         {
             List<User> users = storageBroker.ReadAllUsers();
-            for (int i = 0; i < users.Count; i++)
+            for (int iterator = 0; iterator < users.Count; iterator++)
             {
-                if (users[i] != null && users[i].Id == id)
+                if (users[iterator] != null && users[iterator].Id == id)
                 {
-                    users[i] = null;
+                    users[iterator] = null;
                     loggingBroker.LogInforamation($"PhoneBook with ID {id} deleted successfully.");
                     return;
                 }

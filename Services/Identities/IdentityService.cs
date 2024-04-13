@@ -1,17 +1,17 @@
-﻿using FileDB.Brokers.Storages;
-using FileDB.Models.Users;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
+using FileDB.Models.Users;
 using System.Threading.Tasks;
+using FileDB.Brokers.Storages;
+using System.Collections.Generic;
 
 namespace FileDB.Services.Identities
 {
     internal sealed class IdentityService
     {
-        private static IdentityService instance;
         private static int id;
+        private static IdentityService instance;
         private readonly IStorageBroker storageBroker;
 
         private IdentityService()

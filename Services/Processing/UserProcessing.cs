@@ -1,11 +1,12 @@
-﻿using FileDB.Models.Users;
-using FileDB.Services.Identities;
-using FileDB.Services.Users;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using FileDB.Models.Users;
+using FileDB.Services.Users;
+using FileDB.Services.Identities;
 
 namespace FileDB.Services.Processing
 {
@@ -35,9 +36,10 @@ namespace FileDB.Services.Processing
         public void DeleteUser(int id) =>
             this.userService.Delete(id);
 
-        public void UpdateUser(string name)
+        public void UpdateUser(int id, string name)
         {
             User user = new User();
+            user.Id = id;
             user.Name = name;
             this.userService.Update(user);
         }

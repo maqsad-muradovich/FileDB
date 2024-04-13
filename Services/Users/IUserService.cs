@@ -1,17 +1,17 @@
-﻿using FileDB.Models.Users;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
+using FileDB.Models.Users;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace FileDB.Services.Users
 {
     internal interface IUserService
     {
-        User AddUser(User contact);
+        User AddUser(User user);
         void ShowUsers();
-        void Update(User contact);
+        void Update(User user);
         void Delete(int id);
     }
 }

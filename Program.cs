@@ -1,10 +1,10 @@
-﻿using FileDB.Brokers.Logging;
-using FileDB.Brokers.Storages;
+﻿using System;
 using FileDB.Models.Users;
+using FileDB.Services.Users;
+using FileDB.Brokers.Logging;
+using FileDB.Brokers.Storages;
 using FileDB.Services.Identities;
 using FileDB.Services.Processing;
-using FileDB.Services.Users;
-using System;
 
 namespace FileDB
 {
@@ -44,15 +44,16 @@ namespace FileDB
                         userProcessing.DisplayUsers();
                         break;
                     case "3":
+                        Console.Write("Foydalanuvchi ID kiriting: ");
+                        int updatedId = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Yangi foydalanuvchi nomini kiriting: ");
                         string updatedName = Console.ReadLine();
-                        userProcessing.UpdateUser(updatedName);
+                        userProcessing.UpdateUser(updatedId, updatedName);
                         break;
                     case "4":
                         Console.Write("O'chirish uchun foydalanuvchi ID kiriting: ");
                         int deleteId = Convert.ToInt32(Console.ReadLine());
                         userProcessing.DeleteUser(deleteId);
-                        Console.WriteLine($"ID {deleteId} boʻlgan foydalanuvchi oʻchirildi.");
                         break;
                     case "5":
                         isRunning = false;

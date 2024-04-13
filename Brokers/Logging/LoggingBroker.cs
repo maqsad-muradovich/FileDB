@@ -1,30 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace FileDB.Brokers.Logging
 {
     internal class LoggingBroker : ILoggingBroker
     {
-        public void LogInforamation(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
+        public void LogInforamation(string message)=>
             Console.WriteLine(message);
-            Console.ResetColor();
-        }
-        public void LogError(string userMessage)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
+
+        public void LogError(string userMessage) =>
             Console.WriteLine(userMessage);
-            Console.ResetColor();
-        }
-        public void LogSuccessUser(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
+
+        public void LogSuccessUser(string message)=>
             Console.WriteLine(message);
-            Console.ResetColor();
-        }
     }
 }

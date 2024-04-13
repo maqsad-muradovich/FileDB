@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using FileDB.Models.Users;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace FileDB.Brokers.Storages
 {
@@ -15,6 +15,15 @@ namespace FileDB.Brokers.Storages
         public FileStorageBroker()
         {
             EnsureFileExists();
+        }
+        private void EnsureFileExists()
+        {
+            bool fileExists = File.Exists(FilePath);
+
+            if (fileExists is false)
+            {
+                File.Create(FilePath).Close();
+            }
         }
 
         public User AddUser(User user)
@@ -82,14 +91,5 @@ namespace FileDB.Brokers.Storages
             }
         }
 
-        private void EnsureFileExists()
-        {
-            bool fileExists = File.Exists(FilePath);
-
-            if (fileExists is false)
-            {
-                File.Create(FilePath).Close();
-            }
-        }
     }
 }
