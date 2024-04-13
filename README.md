@@ -1,4 +1,4 @@
-### Project description
+﻿### Project description
 
 The `FileDB` project is a user management system that uses a text file (`Users.txt`) as a database to store user data. The project consists of several main components:
 
@@ -14,3 +14,32 @@ The `FileDB` project is a user management system that uses a text file (`Users.t
      - **Users**: Implements `UserService` to handle operations on users, including adding, displaying, updating and deleting.
 
 The entire system is controlled through a program (`Program.cs`) that instantiates various services and performs operations on users. The project provides basic functionality for managing users using a file system to store data.
+
+### Architecture
+
+FileDB/
+├── Brokers/
+│   ├── Logging/
+│   │   ├── ILoggingBroker.cs
+│   │   └── LoggingBroker.cs
+│   └── Storages/
+│       ├── FileStorageBroker.cs
+│       └── IStorageBroker.cs
+├── FileDB.csproj
+├── FileDB.sln
+├── Models/
+│   └── Users/
+│       └── User.cs
+├── Program.cs
+├── README.md
+├── Services/
+│   ├── Identities/
+│   │   └── IdentityService.cs
+│   ├── Processing/
+│   │   └── UserProcessing.cs
+│   └── Users/
+│       ├── IUserService.cs
+│       └── UserService.cs
+├── Users.txt
+├── bin/
+└── obj/
