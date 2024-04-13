@@ -7,7 +7,7 @@ FileDB is a C# console application designed to work with a user database stored 
 - [Project architecture](#project-architecture)
 - [Launch application](#launching-the-application)
 - [Use](#usage)
-- [Help information](#reference-infarmation)
+- [Help information](#reference-information)
 
 ## Project architecture
 
