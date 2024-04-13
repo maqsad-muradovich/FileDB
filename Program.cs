@@ -14,7 +14,6 @@ namespace FileDB
         {
             IStorageBroker storageBroker;
             ILoggingBroker loggingBroker = new LoggingBroker();
-            IdentityService identityService = IdentityService.GetInstance();
 
             Console.WriteLine("Ma'lumotlar bazasi turini tanlang:");
             Console.WriteLine("1. Matnli maʼlumotlar bazasi (Users.txt)");
@@ -35,6 +34,7 @@ namespace FileDB
                 storageBroker = new FileStorageBroker();
             }
 
+            IdentityService identityService = IdentityService.GetInstance(storageBroker);
             IUserService userService = new UserService(loggingBroker, storageBroker);
             UserProcessing userProcessing = new UserProcessing(userService, identityService);
 

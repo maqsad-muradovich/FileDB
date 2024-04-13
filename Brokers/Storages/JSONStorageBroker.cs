@@ -26,6 +26,11 @@ namespace FileDB.Brokers.Storages
         public User AddUser(User user)
         {
             List<User> users = ReadAllUsers();
+            if (users == null)
+            {
+                users = new List<User>();
+            }
+
             users.Add(user);
             File.WriteAllText(FilePath, JsonConvert.SerializeObject(users));
             return user;
