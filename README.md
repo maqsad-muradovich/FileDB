@@ -5,9 +5,9 @@ FileDB is a C# console application designed to work with a user database stored 
 ## Content
 
 - [Project architecture](#project-architecture)
-- [Launch application](#launch-application)
-- [Use](#use)
-- [Help information](#help-information)
+- [Launch application](#launching-the-application)
+- [Use](#usage)
+- [Help information](#reference-information)
 
 ## Project architecture
 
@@ -69,4 +69,3 @@ The application will prompt you to select an operation from the menu, depending 
 
 - [C# Documentation](https://learn.microsoft.com/ru-ru/dotnet/csharp/)
 - [.NET Documentation](https://learn.microsoft.com/ru-ru/dotnet/)
-```
