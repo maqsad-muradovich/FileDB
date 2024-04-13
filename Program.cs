@@ -12,9 +12,29 @@ namespace FileDB
     {
         static void Main(string[] args)
         {
+            IStorageBroker storageBroker;
             ILoggingBroker loggingBroker = new LoggingBroker();
-            IStorageBroker storageBroker = new FileStorageBroker();
             IdentityService identityService = IdentityService.GetInstance();
+
+            Console.WriteLine("Ma'lumotlar bazasi turini tanlang:");
+            Console.WriteLine("1. Matnli maʼlumotlar bazasi (Users.txt)");
+            Console.WriteLine("2. JSON ma'lumotlar bazasi (Users.json)");
+            Console.Write("Sizning tanlovingiz (1 yoki 2): ");
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                storageBroker = new FileStorageBroker();
+            }
+            else if (choice == "2")
+            {
+                storageBroker = new JSONStorageBroker();
+            }
+            else
+            {
+                Console.WriteLine("Noto'g'ri tanlov. Standart matn bazasi ishlatildi.");
+                storageBroker = new FileStorageBroker();
+            }
+
             IUserService userService = new UserService(loggingBroker, storageBroker);
             UserProcessing userProcessing = new UserProcessing(userService, identityService);
 
