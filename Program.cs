@@ -1,4 +1,9 @@
-﻿using FileDB.Services.Identities;
+﻿using FileDB.Brokers.Logging;
+using FileDB.Brokers.Storages;
+using FileDB.Models.Users;
+using FileDB.Services.Identities;
+using FileDB.Services.Processing;
+using FileDB.Services.Users;
 using System;
 
 namespace FileDB
@@ -7,11 +12,58 @@ namespace FileDB
     {
         static void Main(string[] args)
         {
-            IdentityService identitiService1 = IdentityService.GetInstance();
-            IdentityService identitiService2 = IdentityService.GetInstance();
+            ILoggingBroker loggingBroker = new LoggingBroker();
+            IStorageBroker storageBroker = new FileStorageBroker();
+            IdentityService identityService = IdentityService.GetInstance();
+            IUserService userService = new UserService(loggingBroker, storageBroker);
+            UserProcessing userProcessing = new UserProcessing(userService, identityService);
 
-            Console.WriteLine(identitiService1.GetNewId());
-            Console.WriteLine(identitiService2.GetNewId());
+            bool isRunning = true;
+
+            while (isRunning)
+            {
+                Console.WriteLine("\nMenu:");
+                Console.WriteLine("1. Yangi foydalanuvchi yaratish");
+                Console.WriteLine("2. Barcha foydalanuvchilarni ko'rsatish");
+                Console.WriteLine("3. Foydalanuvchini yangilash");
+                Console.WriteLine("4. Foydalanuvchini oʻchirish");
+                Console.WriteLine("5. Exit");
+
+                Console.Write("\nOperatsiyani tanlash (1-5): ");
+                string userChoice = Console.ReadLine();
+
+                switch (userChoice)
+                {
+                    case "1":
+                        Console.Write("Yangi foydalanuvchi ismini kiriting: ");
+                        string newName = Console.ReadLine();
+                        userProcessing.CreateNewUser(newName);
+                        break;
+                    case "2":
+                        Console.WriteLine("Barcha foydalanuvchilar ro'yxati:");
+                        userProcessing.DisplayUsers();
+                        break;
+                    case "3":
+                        Console.Write("Yangi foydalanuvchi nomini kiriting: ");
+                        string updatedName = Console.ReadLine();
+                        userProcessing.UpdateUser(updatedName);
+                        break;
+                    case "4":
+                        Console.Write("O'chirish uchun foydalanuvchi ID kiriting: ");
+                        int deleteId = Convert.ToInt32(Console.ReadLine());
+                        userProcessing.DeleteUser(deleteId);
+                        Console.WriteLine($"ID {deleteId} boʻlgan foydalanuvchi oʻchirildi.");
+                        break;
+                    case "5":
+                        isRunning = false;
+                        break;
+                    default:
+                        Console.WriteLine("Noto'g'ri tanlov. Iltimos, yana bir bor urinib ko'ring.");
+                        break;
+                }
+            }
+
+            Console.WriteLine("Dastur tugallandi.");
         }
     }
 }
