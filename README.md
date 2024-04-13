@@ -1,30 +1,72 @@
-﻿# Project architecture
+﻿#FileDB
 
-The FileDB project is divided into several folders, each of which is responsible for different aspects of the project:
+FileDB is a C# console application designed to work with a user database stored in a text file. The application allows you to add, delete, update and display users. It implements various services, brokers, and models to manage application data and logic.
 
-- `Brokers/`: Contains brokers for storage access and logging.
-     - `Storages/`: Stores brokers for managing files and data.
-         - `FileStorageBroker.cs`: Implementation of an interface for managing files.
-         - `IStorageBroker.cs`: Interface for file management.
-     - `Logging/`: Stores brokers for logging.
-         - `LoggingBroker.cs`: Implementation of the logging interface.
-         - `ILoggingBroker.cs`: Interface for logging.
-        
-- `Models/`: Stores data models.
-     - `Users/`: Contains the data model for users.
-         - `User.cs`: Definition of the `User` class.
-        
-- `Services/`: Contains services to control various aspects of the application.
-     - `Identities/`: Service for managing identifiers.
-         - `IdentityService.cs`: Class providing unique identifiers.
-     - `Users/`: Services for managing users.
-         - `UserService.cs`: Class responsible for operations with users.
-         - `IUserService.cs`: Interface for the `UserService` service.
-     - `Processing/`: Services for processing users.
-         - `UserProcessing.cs`: Class for processing users.
-        
-- `Program.cs`: Main program file containing the entry point.
+## Content
 
-- `Users.txt`: Data file used to store user information
+- [Project architecture](#project-architecture)
+- [Launch application](#launch-application)
+- [Use](#use)
+- [Help information](#help-information)
 
-To work with the project, you should familiarize yourself with each of the above folders and files to understand their functions and how they interact.
+## Project architecture
+
+The FileDB project has the following structure:
+
+```plaintext
+├── Brokers/
+│ ├── Logging/
+│ │ ├── LoggingBroker.cs
+│ │ └── ILoggingBroker.cs
+│ └── Storages/
+│ ├── FileStorageBroker.cs
+│ └── IStorageBroker.cs
+├──Models/
+│ └──Users/
+│ └── User.cs
+├── Services/
+│ ├── Identities/
+│ │ └── IdentityService.cs
+│ ├── Processing/
+│ │ └── UserProcessing.cs
+│ └──Users/
+│ ├── IUserService.cs
+│ └── UserService.cs
+├── Program.cs
+└──Users.txt
+```
+
+- **Brokers**: The directory contains brokers for accessing data storage and logging.
+     - **Logging**: Brokers for logging (`LoggingBroker.cs` and `ILoggingBroker.cs`).
+     - **Storages**: File management brokers (`FileStorageBroker.cs` and `IStorageBroker.cs`).
+- **Models**: Contains data models (`Users/User.cs`).
+- **Services**: Contains services to manage various aspects of the application.
+     - **Identities**: Manage user identities (`IdentityService.cs`).
+     - **Processing**: Service for processing users (`UserProcessing.cs`).
+     - **Users**: Manage operations with users (`UserService.cs` and `IUserService.cs`).
+- **Program.cs**: Main program file containing the entry point.
+- **Users.txt**: Data file in which users are stored.
+
+## Launching the application
+
+To run the application, open the console in the project root directory and run the following command:
+
+```bash
+dotnet run
+```
+
+The application will prompt you to select an operation from the menu, depending on which the corresponding action will be performed.
+
+## Usage
+
+- Create a new user: Enter 1, then enter the name of the new user.
+- Show all users: Enter 2 to display a list of all users.
+- Update User: Enter 3, then enter the ID and new username.
+- Delete User: Enter 4, then enter the user ID to delete.
+- Exit the program: Enter 5.
+
+## Reference Information
+
+- [C# Documentation](https://learn.microsoft.com/ru-ru/dotnet/csharp/)
+- [.NET Documentation](https://learn.microsoft.com/ru-ru/dotnet/)
+```
