@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileDB.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace FileDB.Services.Processing
 {
     internal interface IUserProcessing
     {
-        public void CreateNewUser(string name);
+        public User CreateNewUser(string name);
         public void DisplayUsers();
         public void DeleteUser(int id);
         public void UpdateUser(int id, string name);

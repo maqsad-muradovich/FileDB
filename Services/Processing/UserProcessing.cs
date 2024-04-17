@@ -22,12 +22,14 @@ namespace FileDB.Services.Processing
             this.identityService = identitiyService;
         }
 
-        public void CreateNewUser(string name)
+        public User CreateNewUser(string name)
         {
             User user = new User();
             user.Id = this.identityService.GetNewId();
             user.Name = name;
             this.userService.AddUser(user);
+
+            return user;
         }
 
         public void DisplayUsers() =>
