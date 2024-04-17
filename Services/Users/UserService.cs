@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Linq;
 using FileDB.Models.Users;
@@ -59,19 +60,21 @@ namespace FileDB.Services.Users
             }
         }
 
-        public void DeleteUser(int id)
+        public void Delete(int id)
         {
             List<User> users = storageBroker.ReadAllUsers();
-            for (int iterator = 0; iterator < users.Count; iterator++)
+            User userToDelete = users.FirstOrDefault(user => user.Id == id);
+
+            if (userToDelete != null)
             {
-                if (users[iterator] != null && users[iterator].Id == id)
-                {
-                    users[iterator] = null;
-                    loggingBroker.LogInforamation($"PhoneBook with ID {id} deleted successfully.");
-                    return;
-                }
+                loggingBroker.LogInforamation($"User with ID {id} deleted successfully.");
+
+                storageBroker.DeleteUser(id);
             }
-            loggingBroker.LogError($"PhoneBook with ID {id} not found.");
+            else
+            {
+                loggingBroker.LogError($"User with ID {id} not found.");
+            }
         }
 
         public void Update(User user)
@@ -88,11 +91,6 @@ namespace FileDB.Services.Users
             }
 
             storageBroker.UpdateUser(user);
-        }
-
-        public void Delete(int id)
-        {
-            storageBroker.DeleteUser(id);
         }
     }
 }
