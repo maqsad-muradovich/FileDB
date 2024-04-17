@@ -10,7 +10,7 @@ using FileDB.Services.Identityes;
 
 namespace FileDB.Services.Processing
 {
-    internal class UserProcessing
+    internal class UserProcessing : IUserProcessing
     {
         private readonly IUserService userService;
         private readonly IdentityService identityService;
