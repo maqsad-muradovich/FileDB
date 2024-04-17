@@ -8,7 +8,7 @@ namespace FileDB.Brokers.Storages
 {
     internal class JSONStorageBroker : IStorageBroker
     {
-        private const string FilePath = "../../../Users.json";
+        private const string FilePath = "../../../Assets/Users.json";
 
         public JSONStorageBroker()
         {
