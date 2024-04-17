@@ -36,7 +36,7 @@ namespace FileDB
 
             IdentityService identityService = IdentityService.GetInstance(storageBroker);
             IUserService userService = new UserService(loggingBroker, storageBroker);
-            UserProcessing userProcessing = new UserProcessing(userService, identityService);
+            IUserProcessing userProcessing = new UserProcessing(userService, identityService);
 
             bool isRunning = true;
 
