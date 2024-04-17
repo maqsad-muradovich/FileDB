@@ -3,7 +3,7 @@ using FileDB.Models.Users;
 using FileDB.Services.Users;
 using FileDB.Brokers.Logging;
 using FileDB.Brokers.Storages;
-using FileDB.Services.Identities;
+using FileDB.Services.Identityes;
 using FileDB.Services.Processing;
 
 namespace FileDB

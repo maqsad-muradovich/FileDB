@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using FileDB.Brokers.Storages;
 using System.Collections.Generic;
 
-namespace FileDB.Services.Identities
+namespace FileDB.Services.Identityes
 {
-    internal sealed class IdentityService
+    internal sealed class IdentityService : IIdentityService
     {
         private static int id;
         private static IdentityService instance;
