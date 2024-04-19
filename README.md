@@ -65,6 +65,9 @@ The application will prompt you to select an operation from the menu, depending 
 - Delete User: Enter 4, then enter the user ID to delete.
 - Exit the program: Enter 5.
 
+## Demonstration
+![alt text](DemoFileDB.gif)
+
 ## Reference Information
 
 - [C# Documentation](https://learn.microsoft.com/ru-ru/dotnet/csharp/)
