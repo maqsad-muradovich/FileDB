@@ -50,7 +50,7 @@ namespace FileDB.Services.Users
         }
 
         public List<User> AllUsers() =>
-            storageBroker.ReadAllUsers();
+            this.storageBroker.ReadAllUsers();
 /*            foreach (User user in users)
             {
                 loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
