@@ -38,12 +38,12 @@ namespace FileDB.Services.Processing
         public void DeleteUser(int id) =>
             this.userService.Delete(id);
 
-        public void UpdateUser(int id, string name)
+        public bool UpdateUser(int id, string name)
         {
             User user = new User();
             user.Id = id;
             user.Name = name;
-            this.userService.Update(user);
+            return this.userService.Update(user);
         }
     }
 }

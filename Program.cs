@@ -74,7 +74,14 @@ namespace FileDB
                         int updatedId = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Yangi foydalanuvchi nomini kiriting: ");
                         string updatedName = Console.ReadLine();
-                        userProcessing.UpdateUser(updatedId, updatedName);
+                        if (userProcessing.UpdateUser(updatedId, updatedName))
+                        {
+                            loggingBroker.LogError("Your user is empty");
+                        }
+                        else
+                        {
+                            loggingBroker.LogError("Your user is invalid");
+                        }
                         break;
                     case "4":
                         Console.Write("O'chirish uchun foydalanuvchi ID kiriting: ");

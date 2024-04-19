@@ -12,7 +12,7 @@ namespace FileDB.Services.Processing
         User CreateNewUser(string name);
         List<User> DisplayUsers();
         void DeleteUser(int id);
-        void UpdateUser(int id, string name);
+        bool UpdateUser(int id, string name);
 
     }
 }

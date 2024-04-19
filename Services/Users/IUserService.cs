@@ -11,7 +11,7 @@ namespace FileDB.Services.Users
     {
         User AddUser(User user);
         List<User> AllUsers();
-        void Update(User user);
+        bool Update(User user);
         void Delete(int id);
     }
 }

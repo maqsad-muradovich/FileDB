@@ -74,21 +74,23 @@ namespace FileDB.Services.Users
             }
         }
 
-        public void Update(User user)
+        public bool Update(User user)
         {
             List<User> users = storageBroker.ReadAllUsers();
-            bool checkUser = true;
+
             foreach (User item in users)
             {
                 if (item.Id == user.Id)
                 {
                     storageBroker.UpdateUser(user);
-                    checkUser = false;
-                    break;
+
+                    return true;
                 }
             }
+            
+            return false;
 
-            if (user is null)
+/*            if (user is null)
             {
                 loggingBroker.LogError("Your user is empty");
             }
@@ -96,7 +98,7 @@ namespace FileDB.Services.Users
             if (checkUser || user.Id == 0 || string.IsNullOrEmpty(user.Name))
             {
                 loggingBroker.LogError("Your user is invalid");
-            }
+            }*/
         }
     }
 }
