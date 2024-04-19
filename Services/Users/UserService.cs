@@ -29,17 +29,6 @@ namespace FileDB.Services.Users
                 : ValidateAndAddUser(user);
         }
 
-        public void ShowUsers()
-        {
-            List<User> users = storageBroker.ReadAllUsers();
-
-            foreach (User user in users)
-            {
-                loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
-            }
-            loggingBroker.LogInforamation("===End of users===\n");
-        }
-
         private User CreateAndLogInvalidUser()
         {
             loggingBroker.LogError("User is invalid");
@@ -59,6 +48,14 @@ namespace FileDB.Services.Users
                 return storageBroker.AddUser(user);
             }
         }
+
+        public List<User> AllUsers() =>
+            storageBroker.ReadAllUsers();
+/*            foreach (User user in users)
+            {
+                loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
+            }
+            loggingBroker.LogInforamation("===End of users===\n");*/
 
         public void Delete(int id)
         {
