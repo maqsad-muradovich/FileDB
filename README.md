@@ -66,7 +66,7 @@ The application will prompt you to select an operation from the menu, depending 
 - Exit the program: Enter 5.
 
 ## Demonstration
-![alt text](DemoFileDB.gif)
+![alt text](DemoFileDB.mp4)
 
 ## Reference Information
 
