@@ -32,7 +32,7 @@ namespace FileDB.Services.Processing
             return user;
         }
 
-        public void DisplayUsers() =>
+        public List<User> DisplayUsers() =>
             this.userService.AllUsers();
 
         public void DeleteUser(int id) =>
