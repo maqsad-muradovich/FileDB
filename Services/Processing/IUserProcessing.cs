@@ -9,10 +9,10 @@ namespace FileDB.Services.Processing
 {
     internal interface IUserProcessing
     {
-        public User CreateNewUser(string name);
-        public void DisplayUsers();
-        public void DeleteUser(int id);
-        public void UpdateUser(int id, string name);
+        User CreateNewUser(string name);
+        void DisplayUsers();
+        void DeleteUser(int id);
+        void UpdateUser(int id, string name);
 
     }
 }
