@@ -5,6 +5,7 @@ using FileDB.Brokers.Logging;
 using FileDB.Brokers.Storages;
 using FileDB.Services.Identityes;
 using FileDB.Services.Processing;
+using System.Collections.Generic;
 
 namespace FileDB
 {
@@ -61,7 +62,12 @@ namespace FileDB
                         break;
                     case "2":
                         Console.WriteLine("Barcha foydalanuvchilar ro'yxati:");
-                        userProcessing.DisplayUsers();
+                        List<User> users = userProcessing.DisplayUsers();
+                        foreach (User user in users)
+                        {
+                            loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
+                        }
+                        loggingBroker.LogInforamation("===End of users===\n");
                         break;
                     case "3":
                         Console.Write("Foydalanuvchi ID kiriting: ");
