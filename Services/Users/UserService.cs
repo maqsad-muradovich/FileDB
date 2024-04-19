@@ -51,11 +51,6 @@ namespace FileDB.Services.Users
 
         public List<User> AllUsers() =>
             this.storageBroker.ReadAllUsers();
-/*            foreach (User user in users)
-            {
-                loggingBroker.LogSuccessUser($"{user.Id}, {user.Name}");
-            }
-            loggingBroker.LogInforamation("===End of users===\n");*/
 
         public void Delete(int id)
         {
@@ -89,16 +84,6 @@ namespace FileDB.Services.Users
             }
             
             return false;
-
-/*            if (user is null)
-            {
-                loggingBroker.LogError("Your user is empty");
-            }
-
-            if (checkUser || user.Id == 0 || string.IsNullOrEmpty(user.Name))
-            {
-                loggingBroker.LogError("Your user is invalid");
-            }*/
         }
     }
 }
