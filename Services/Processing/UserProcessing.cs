@@ -33,7 +33,7 @@ namespace FileDB.Services.Processing
         }
 
         public void DisplayUsers() =>
-            this.userService.ShowUsers();
+            this.userService.AllUsers();
 
         public void DeleteUser(int id) =>
             this.userService.Delete(id);
